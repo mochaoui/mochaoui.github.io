@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Portfolio</title>
+    <title>Mohammed Chaoui - Cybersecurity Professional</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="matrix-bg"></div>
+    
     <header>
         <nav>
-            <div class="logo">Your Name</div>
+            <div class="logo">[MC_Security]</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -22,66 +26,110 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Web Developer & Designer</p>
-            <a href="#contact" class="cta-button">Get in Touch</a>
+            <div class="terminal-text">
+                <span class="prompt">$</span> whoami<br>
+                <h1>Mohammed Chaoui</h1>
+                <span class="prompt">$</span> role<br>
+                <h2>Penetration Tester & Security Specialist</h2>
+                <span class="typing-text">Securing digital assets through ethical hacking...</span>
+            </div>
+            <div class="cta-buttons">
+                <a href="#contact" class="primary-btn">Initialize Connection</a>
+                <a href="#expertise" class="secondary-btn">View Arsenal</a>
+            </div>
         </div>
     </section>
 
     <section id="about" class="about">
-        <h2>About Me</h2>
+        <h2>// About</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Your professional description here...</p>
-            </div>
-            <div class="skills">
-                <h3>Skills</h3>
-                <div class="skill-tags">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>React</span>
-                    <!-- Add more skills -->
-                </div>
+                <p>As a dedicated Penetration Tester and Cybersecurity Professional, I specialize in identifying and exploiting security vulnerabilities to help organizations strengthen their defensive posture. With extensive experience in both offensive and defensive security, I provide comprehensive security assessments that simulate real-world attack scenarios.</p>
+                
+                <p>My methodology combines automated scanning with manual testing techniques, ensuring thorough coverage of potential attack vectors. I pride myself on delivering detailed, actionable reports that help organizations understand and address their security risks effectively.</p>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <img src="project1-image.jpg" alt="Project 1">
-                <h3>Project Title</h3>
-                <p>Project description goes here...</p>
-                <div class="project-links">
-                    <a href="#" class="button">View Project</a>
-                    <a href="#" class="button">GitHub</a>
-                </div>
+    <section id="expertise" class="expertise">
+        <h2>// Technical Arsenal</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Penetration Testing</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Web Application Security</li>
+                    <li><i class="fas fa-check"></i> Network Infrastructure Testing</li>
+                    <li><i class="fas fa-check"></i> Mobile Application Security</li>
+                    <li><i class="fas fa-check"></i> Wireless Network Assessment</li>
+                    <li><i class="fas fa-check"></i> Social Engineering</li>
+                </ul>
             </div>
-            <!-- Add more project cards -->
+            <div class="skill-category">
+                <h3>Tools & Technologies</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Burp Suite Professional</li>
+                    <li><i class="fas fa-check"></i> Metasploit Framework</li>
+                    <li><i class="fas fa-check"></i> Nmap & Wireshark</li>
+                    <li><i class="fas fa-check"></i> Kali Linux</li>
+                    <li><i class="fas fa-check"></i> Custom Exploitation Tools</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Certifications & Methodologies</h3>
+                <ul>
+                    <li><i class="fas fa-certificate"></i> OSCP</li>
+                    <li><i class="fas fa-certificate"></i> CEH</li>
+                    <li><i class="fas fa-check"></i> OWASP Top 10</li>
+                    <li><i class="fas fa-check"></i> PTES Framework</li>
+                    <li><i class="fas fa-check"></i> NIST Guidelines</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2>// Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-bug"></i>
+                <h3>Vulnerability Assessment</h3>
+                <p>Comprehensive scanning and analysis of systems to identify security weaknesses.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Penetration Testing</h3>
+                <p>Advanced exploitation techniques to validate security controls and identify risks.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <h3>Security Code Review</h3>
+                <p>Manual and automated analysis of application source code for security flaws.</p>
+            </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
-        <h2>Contact Me</h2>
+        <h2>// Initialize Contact</h2>
         <div class="contact-content">
-            <form>
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" required></textarea>
-                <button type="submit" class="button">Send Message</button>
-            </form>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+            <div class="contact-text">
+                <p>Ready to enhance your security posture? Let's discuss how I can help protect your digital assets.</p>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:contact@mohammedchaoui.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://linkedin.com/in/mohammedchaoui" class="contact-btn">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/mohammedchaoui" class="contact-btn">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2024 Mohammed Chaoui | Cybersecurity Professional</p>
     </footer>
 </body>
 </html> 
