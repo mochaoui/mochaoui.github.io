@@ -9,13 +9,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Add animation class to elements when they come into view
-// const observer = new IntersectionObserver((entries) => {
-//     entries.forEach(entry => {
-//         if (entry.isIntersecting) {
-//             entry.target.classList.add('animate');
-//         }
-//     });
-// });
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+        }
+    });
+});
 
 // Observe all sections
 document.querySelectorAll('section').forEach((section) => {
