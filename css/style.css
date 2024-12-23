@@ -1,11 +1,12 @@
 :root {
-    --primary: #00ff4c;
-    --secondary: #ff003c;
-    --background: #0a0a0a;
-    --surface: #1a1a1a;
-    --text: #ffffff;
-    --accent: #00eeff;
-    --cyber-gradient: linear-gradient(45deg, var(--primary), var(--accent));
+    --primary: #0f0;
+    --secondary: #00ff9d;
+    --accent: #ff003c;
+    --background: #0a0f16;
+    --surface: #141c26;
+    --text: #e0e0e0;
+    --terminal-bg: rgba(10, 15, 22, 0.95);
+    --grid-size: 30px;
 }
 
 * {
@@ -15,69 +16,50 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Fira Code', monospace;
     background-color: var(--background);
     color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Cyber Lines Animation */
-.cyber-lines {
+/* Matrix Effect */
+.matrix-effect {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: -1;
+    z-index: -2;
+    opacity: 0.05;
     background: 
-        linear-gradient(90deg, var(--background) 21px, transparent 1%) center,
-        linear-gradient(var(--background) 21px, transparent 1%) center,
-        var(--primary);
-    background-size: 22px 22px;
-    opacity: 0.1;
+        linear-gradient(to bottom, 
+            transparent 0%,
+            rgba(0, 255, 0, 0.2) 50%,
+            transparent 100%);
+    background-size: 100% var(--grid-size);
+    animation: matrix-scan 10s linear infinite;
 }
 
-/* Glitch Effect */
-.glitch {
-    position: relative;
-    text-shadow: 0.05em 0 0 var(--secondary),
-                -0.025em -0.05em 0 var(--accent),
-                0.025em 0.05em 0 var(--primary);
-    animation: glitch 1s infinite;
-}
-
-.glitch::before,
-.glitch::after {
-    content: attr(data-text);
-    position: absolute;
+.noise-overlay {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 var(--secondary);
-    clip: rect(24px, 550px, 90px, 0);
-    animation: glitch-anim 3s infinite linear alternate-reverse;
-}
-
-.glitch::after {
-    left: -2px;
-    text-shadow: -2px 0 var(--accent);
-    clip: rect(85px, 550px, 140px, 0);
-    animation: glitch-anim2 2s infinite linear alternate-reverse;
+    z-index: -1;
+    opacity: 0.05;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAx3HAAAACHRSTlMzMzMzMzMzM85JBgUAAAABYktHRAH/Ai3eAAAASElEQVQ4y2NgQAP8/PwMQMDPz4/C5+fnx8rPz8+A4vPz82NE0c/Pj+LH5Ef2FxCD7kd09/Hz86P7GcVf6OFB2I8YYYUeTgB3iFGzjXuqKwAAAABJRU5ErkJggg==');
 }
 
 /* Navigation */
 header {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(10, 15, 22, 0.9);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--primary);
 }
@@ -92,189 +74,185 @@ nav {
 }
 
 .logo {
-    font-family: 'Space Mono', monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 1.5rem;
-    font-weight: 700;
     color: var(--primary);
-}
-
-.nav-items {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
-
-.nav-items a {
-    color: var(--text);
-    text-decoration: none;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    position: relative;
-    padding: 0.5rem 0;
-}
-
-.nav-items a::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--cyber-gradient);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-}
-
-.nav-items a:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-/* Hero Section */
-.hero {
-    height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+    gap: 0.5rem;
 }
 
-.cyber-scanner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(transparent 50%, rgba(0, 255, 76, 0.1) 50%);
-    background-size: 100% 4px;
-    animation: scan 4s linear infinite;
-}
-
-.hero-content {
-    text-align: center;
-    z-index: 1;
-}
-
-.cyber-text {
-    margin-bottom: 2rem;
-}
-
-.glitch-title {
-    font-size: 4rem;
-    font-weight: 700;
-    margin: 1rem 0;
-    text-transform: uppercase;
-}
-
-.typing-container {
-    font-family: 'Space Mono', monospace;
-    font-size: 1.2rem;
-    color: var(--accent);
+.bracket {
+    color: var(--secondary);
 }
 
 .cursor {
     animation: blink 1s infinite;
 }
 
-/* Cyber Button */
-.cyber-button {
-    position: relative;
-    display: inline-block;
-    padding: 1rem 3rem;
-    color: var(--primary);
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text);
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Space Mono', monospace;
-    overflow: hidden;
-    transition: 0.3s;
-    border: 1px solid var(--primary);
+    font-size: 0.9rem;
+    position: relative;
+    padding: 0.5rem 0;
 }
 
-.cyber-button:hover {
-    background: var(--primary);
-    color: var(--background);
-    box-shadow: 0 0 20px var(--primary);
-}
-
-.cyber-button span {
+.nav-link::before {
+    content: '';
     position: absolute;
-    display: block;
-}
-
-.cyber-button span:nth-child(1) {
-    top: 0;
-    left: -100%;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary));
-    animation: btn-anim1 1s linear infinite;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
 }
 
-/* Skills Section */
-.skills-container {
+.nav-link:hover::before {
+    transform: scaleX(1);
+}
+
+/* Terminal Window */
+.terminal-window {
+    background: var(--terminal-bg);
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.1);
+}
+
+.terminal-header {
+    background: var(--surface);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--primary);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.terminal-buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.terminal-buttons span:nth-child(2) {
+    background: var(--secondary);
+}
+
+.terminal-buttons span:nth-child(3) {
+    background: var(--primary);
+}
+
+.terminal-content {
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+}
+
+.command-line {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.prompt {
+    color: var(--primary);
+}
+
+.command {
+    color: var(--text);
+}
+
+.response {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+    padding-left: calc(1rem + 8px);
+}
+
+/* Expertise Section */
+.expertise-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 2rem;
 }
 
-.skill-bar {
+.skill-category {
+    background: var(--surface);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.skill-item {
     margin-bottom: 1.5rem;
 }
 
-.skill-name {
-    display: block;
+.skill-header {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 0.5rem;
-    font-family: 'Space Mono', monospace;
-    color: var(--accent);
 }
 
-.bar {
+.skill-bar {
     height: 4px;
-    background: var(--surface);
-    position: relative;
+    background: rgba(0, 255, 0, 0.1);
     border-radius: 2px;
+    overflow: hidden;
 }
 
-.progress {
-    position: absolute;
+.skill-progress {
     height: 100%;
-    background: var(--cyber-gradient);
-    animation: progress 1.5s ease-out forwards;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    animation: progress 1.5s ease-out;
 }
 
-/* Services Section */
-.service-card {
+/* Writeups Section */
+.writeups-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.writeup-card {
     background: var(--surface);
     border: 1px solid var(--primary);
-    padding: 2rem;
-    border-radius: 5px;
+    border-radius: 8px;
+    padding: 1.5rem;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.service-card:hover {
+.writeup-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 255, 76, 0.2);
+    box-shadow: 0 5px 20px rgba(0, 255, 0, 0.2);
 }
 
 /* Animations */
-@keyframes scan {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(100%); }
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
-@keyframes glitch {
-    0% { text-shadow: 0.05em 0 0 var(--secondary), -0.025em -0.05em 0 var(--accent); }
-    14% { text-shadow: 0.05em 0 0 var(--secondary), -0.025em -0.05em 0 var(--accent); }
-    15% { text-shadow: -0.05em -0.025em 0 var(--secondary), 0.025em 0.025em 0 var(--accent); }
-    49% { text-shadow: -0.05em -0.025em 0 var(--secondary), 0.025em 0.025em 0 var(--accent); }
-    50% { text-shadow: 0.025em 0.05em 0 var(--secondary), 0.05em 0 0 var(--accent); }
-    99% { text-shadow: 0.025em 0.05em 0 var(--secondary), 0.05em 0 0 var(--accent); }
-    100% { text-shadow: -0.025em 0 0 var(--secondary), -0.025em -0.025em 0 var(--accent); }
+@keyframes matrix-scan {
+    0% { background-position: 0 -100vh; }
+    100% { background-position: 0 100vh; }
 }
 
 @keyframes progress {
@@ -283,15 +261,16 @@ nav {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-items {
+    .nav-menu {
         display: none;
     }
     
-    .glitch-title {
-        font-size: 2.5rem;
+    .expertise-grid {
+        grid-template-columns: 1fr;
     }
     
-    .skills-container {
+    .writeups-container {
         grid-template-columns: 1fr;
+        padding: 1rem;
     }
 }
