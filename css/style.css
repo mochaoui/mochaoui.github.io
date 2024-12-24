@@ -289,9 +289,71 @@ nav {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
-        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        background: var(--surface);
+        padding: 0.8rem 0.2rem;
+        border-top: 1px solid var(--primary);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        gap: 0;
     }
-    
+
+    .nav-link {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.2rem;
+        text-align: center;
+        width: 25%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .nav-link::before {
+        content: '~';
+        font-size: 0.7rem;
+    }
+
+    .nav-link {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    .nav-link[href="#home"]::after {
+        content: '\f015';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 1rem;
+    }
+
+    .nav-link[href="#about"]::after {
+        content: '\f007';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 1rem;
+    }
+
+    .nav-link[href="#expertise"]::after {
+        content: '\f7d9';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 1rem;
+    }
+
+    .nav-link[href="#contact"]::after {
+        content: '\f0e0';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 1rem;
+    }
+
     .expertise-grid {
         grid-template-columns: 1fr;
     }
@@ -864,15 +926,62 @@ nav {
         display: flex;
         justify-content: space-around;
         background: var(--surface);
-        padding: 0.8rem;
+        padding: 0.8rem 0.2rem;
         border-top: 1px solid var(--primary);
         backdrop-filter: blur(10px);
         z-index: 1000;
+        gap: 0;
     }
 
     .nav-link {
-        font-size: 0.8rem;
-        padding: 0.5rem;
+        font-size: 0.7rem;
+        padding: 0.5rem 0.2rem;
+        text-align: center;
+        width: 25%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .nav-link::before {
+        content: '~';
+        font-size: 0.7rem;
+    }
+
+    .nav-link {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    .nav-link[href="#home"]::after {
+        content: '\f015';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 1rem;
+    }
+
+    .nav-link[href="#about"]::after {
+        content: '\f007';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 1rem;
+    }
+
+    .nav-link[href="#expertise"]::after {
+        content: '\f7d9';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 1rem;
+    }
+
+    .nav-link[href="#contact"]::after {
+        content: '\f0e0';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 1rem;
     }
 
     /* Terminal Window */
@@ -1012,7 +1121,8 @@ nav {
     }
 
     .nav-link {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
+        padding: 0.4rem 0.1rem;
     }
 
     .terminal-content {
