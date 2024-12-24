@@ -549,6 +549,7 @@ nav {
     background: var(--card-bg);
     border-radius: 8px;
     transition: transform 0.3s ease;
+    overflow: hidden;
 }
 
 .info-item:hover {
@@ -654,6 +655,16 @@ nav {
     
     .info-item {
         padding: 0.8rem;
+        flex-wrap: wrap;
+    }
+    
+    .info-item i {
+        min-width: 20px;
+    }
+    
+    .info-text {
+        font-size: 0.85rem;
+        flex: 1;
     }
     
     .social-links {
@@ -662,6 +673,12 @@ nav {
     
     .social-link {
         justify-content: center;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .contact-info {
+        width: 100%;
     }
 }
 
