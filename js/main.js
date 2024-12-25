@@ -2,7 +2,13 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        const target = document.querySelector(this.getAttribute('href'));
+        const headerOffset = 70; // Match this with your header height
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
             behavior: 'smooth'
         });
     });
@@ -39,17 +45,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (charIndex < messages[messageIndex].length) {
                 typingText.textContent += messages[messageIndex].charAt(charIndex);
                 charIndex++;
-                setTimeout(typeWriter, 50);
+                // Add random delay between characters for more realistic typing
+                setTimeout(typeWriter, Math.random() * 50 + 30);
             } else {
                 setTimeout(() => {
-                    messageIndex++;
-                    charIndex = 0;
-                    typingText.textContent = '';
-                    typeWriter();
+                    // Add blinking effect before clearing
+                    typingText.style.animation = 'blink 0.5s step-end 3';
+                    setTimeout(() => {
+                        messageIndex++;
+                        charIndex = 0;
+                        typingText.textContent = '';
+                        typingText.style.animation = '';
+                        typeWriter();
+                    }, 1500);
                 }, 1000);
             }
         }
     }
     
-    typeWriter();
+    // Start typing after initial commands are shown
+    setTimeout(typeWriter, 2500);
 }); 

@@ -120,9 +120,11 @@ nav {
     border: 1px solid var(--primary);
     width: 90%;
     max-width: 800px;
-    margin: 2rem auto;
+    margin: 1rem auto;
     overflow: hidden;
     box-shadow: 0 0 30px var(--border-glow);
+    position: relative;
+    animation: terminalFadeIn 0.5s ease-out;
 }
 
 .terminal-header {
@@ -130,12 +132,28 @@ nav {
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     border-bottom: 1px solid var(--primary);
+    position: relative;
+    height: 35px;
+}
+
+.terminal-title {
+    color: var(--text);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    z-index: 1;
 }
 
 .terminal-buttons {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     gap: 0.5rem;
+    z-index: 2;
 }
 
 .terminal-buttons span {
@@ -156,12 +174,28 @@ nav {
 .terminal-content {
     padding: 1rem;
     font-family: 'Fira Code', monospace;
+    opacity: 0;
+    animation: contentFadeIn 0.5s ease-out 0.5s forwards;
 }
 
 .command-line {
     display: flex;
     gap: 1rem;
     margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.command-line:nth-child(1) {
+    animation: slideIn 0.3s ease-out 0.7s forwards;
+}
+
+.command-line:nth-child(3) {
+    animation: slideIn 0.3s ease-out 1.4s forwards;
+}
+
+.command-line:nth-child(5) {
+    animation: slideIn 0.3s ease-out 2.1s forwards;
 }
 
 .prompt {
@@ -176,6 +210,16 @@ nav {
     color: var(--secondary);
     margin-bottom: 1rem;
     padding-left: calc(1rem + 8px);
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.response:nth-child(2) {
+    animation: slideIn 0.3s ease-out 1s forwards;
+}
+
+.response:nth-child(4) {
+    animation: slideIn 0.3s ease-out 1.7s forwards;
 }
 
 /* Expertise Section */
@@ -430,6 +474,7 @@ nav {
 .about {
     padding: 6rem 5%;
     position: relative;
+    margin-top: 2rem;
 }
 
 .about-container {
@@ -848,8 +893,8 @@ nav {
 
 /* Update terminal typing effect */
 .typing-text::after {
-    content: '_';
-    animation: cursor-blink 1s step-end infinite;
+    content: '█';
+    animation: cursorBlink 1s step-end infinite;
 }
 
 /* New Animations */
@@ -867,8 +912,8 @@ nav {
     100% { transform: translateY(100vh); }
 }
 
-@keyframes cursor-blink {
-    from, to { opacity: 1; }
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
 
@@ -1102,8 +1147,8 @@ nav {
 
     /* Main content padding */
     main {
-        padding-top: 60px; /* Space for fixed header */
-        padding-bottom: 60px; /* Space for bottom navigation */
+        padding-top: 70px; /* Slightly reduce top padding */
+        padding-bottom: 60px;
     }
 
     /* Adjust section spacing */
@@ -1145,4 +1190,240 @@ nav {
     main {
         padding-bottom: 1rem;
     }
+}
+
+.projects {
+    padding: 4rem 2rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: var(--card-bg, #1a1a1a);
+    border: 1px solid var(--border-color, #333);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+}
+
+.project-icon {
+    font-size: 2rem;
+    color: var(--accent-color, #00ff00);
+    margin-bottom: 1rem;
+}
+
+.project-content h4 {
+    color: var(--text-primary, #fff);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.project-content p {
+    color: var(--text-secondary, #ccc);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-color, #00ff00);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: var(--accent-hover, #33ff33);
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Update these styles in your CSS file */
+.expertise {
+    /* Remove any border if present */
+    border: none;
+    padding: 0; /* Remove any padding */
+}
+
+.cert-category {
+    background: var(--surface);
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin: 0; /* Remove margin */
+}
+
+.section-header {
+    border-bottom: 1px solid var(--primary);
+    margin-bottom: 0;
+    background: var(--surface); /* Ensure consistent background */
+}
+
+.cert-grid {
+    padding: 2rem;
+    background: var(--surface); /* Match background color */
+}
+
+/* Update the main padding */
+main {
+    padding-top: 70px; /* Slightly reduce top padding */
+    padding-bottom: 60px;
+}
+
+/* Update hero section */
+.hero {
+    padding: 1rem 0; /* Reduce padding */
+    margin-top: 0; /* Remove top margin */
+    scroll-margin-top: 70px;
+}
+
+/* Update terminal window styles */
+.terminal-window {
+    background: var(--terminal-bg);
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+    width: 90%;
+    max-width: 800px;
+    margin: 1rem auto; /* Reduce margin */
+    overflow: hidden;
+    box-shadow: 0 0 30px var(--border-glow);
+    position: relative;
+}
+
+.terminal-header {
+    background: var(--surface);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the title */
+    border-bottom: 1px solid var(--primary);
+    position: relative; /* Add this */
+    height: 35px; /* Add fixed height */
+}
+
+.terminal-title {
+    color: var(--text);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    z-index: 1; /* Ensure title is above buttons */
+}
+
+.terminal-buttons {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 2; /* Ensure buttons are above title */
+}
+
+/* Add this to all sections that are scroll targets */
+section[id] {
+    scroll-margin-top: 70px;
+}
+
+/* Add these terminal animations */
+.terminal-window {
+    animation: terminalFadeIn 0.5s ease-out;
+}
+
+.terminal-content {
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    opacity: 0;
+    animation: contentFadeIn 0.5s ease-out 0.5s forwards;
+}
+
+.command-line {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.command-line:nth-child(1) {
+    animation: slideIn 0.3s ease-out 0.7s forwards;
+}
+
+.command-line:nth-child(3) {
+    animation: slideIn 0.3s ease-out 1.4s forwards;
+}
+
+.command-line:nth-child(5) {
+    animation: slideIn 0.3s ease-out 2.1s forwards;
+}
+
+.response {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.response:nth-child(2) {
+    animation: slideIn 0.3s ease-out 1s forwards;
+}
+
+.response:nth-child(4) {
+    animation: slideIn 0.3s ease-out 1.7s forwards;
+}
+
+@keyframes terminalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes contentFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add blinking cursor to the last command */
+.typing-text::after {
+    content: '█';
+    animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
