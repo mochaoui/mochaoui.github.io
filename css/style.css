@@ -405,6 +405,24 @@ nav {
         grid-template-columns: 1fr;
         padding: 1rem;
     }
+
+    /* Add the projects icon */
+    .nav-link[href="#projects"]::after {
+        content: '\f0b1'; /* Briefcase icon */
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+    }
+
+    /* Adjust spacing for 5 icons instead of 4 */
+    .nav-menu {
+        justify-content: space-evenly;
+        padding: 0.8rem 0.1rem;
+    }
+
+    .nav-link {
+        width: 35px; /* Slightly smaller to fit all icons */
+        height: 35px;
+    }
 }
 
 /* Add these styles to the existing CSS */
