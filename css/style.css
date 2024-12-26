@@ -1236,7 +1236,7 @@ nav {
 
 .project-icon {
     font-size: 2rem;
-    color: var(--accent-color, #00ff00);
+    color: var(--accent);
     margin-bottom: 1rem;
 }
 
@@ -1448,7 +1448,7 @@ section[id] {
 
 /* Add this if you want to highlight security-focused projects */
 .project-card .fa-shield-alt {
-    color: var(--primary); /* Use your red theme color */
+    color: var(--accent);
 }
 
 /* Adjust grid for 5 projects */
