@@ -1445,3 +1445,16 @@ section[id] {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+
+/* Add this if you want to highlight security-focused projects */
+.project-card .fa-shield-alt {
+    color: var(--primary); /* Use your red theme color */
+}
+
+/* Adjust grid for 5 projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly smaller minmax */
+    gap: 2rem;
+    margin-top: 2rem;
+}
