@@ -66,3 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start typing after initial commands are shown
     setTimeout(typeWriter, 2500);
 }); 
+
+// Add this function to show/hide the certificate progress
+function toggleCertificateProgress(show) {
+  const container = document.querySelector('.certificate-container');
+  if (container) {
+    container.style.display = show ? 'block' : 'none';
+  }
+}
+
+// Example usage:
+// toggleCertificateProgress(true);  // Show the progress
+// toggleCertificateProgress(false); // Hide the progress 
