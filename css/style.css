@@ -628,11 +628,122 @@ nav {
 
 .contact-header {
     padding: 2rem;
-    background: rgba(0, 255, 140, 0.07);
+    background: rgba(0, 255, 0, 0.05);
     display: flex;
     align-items: center;
     gap: 1rem;
     border-bottom: 1px solid var(--primary);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add scanning line effect */
+.contact-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        #00ff00,
+        transparent
+    );
+    animation: scanLine 3s linear infinite;
+}
+
+/* Add glitch effect to the header text */
+.contact-header h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ff00;
+    font-size: 1.5rem;
+    margin: 0;
+    position: relative;
+    animation: glitch 5s infinite;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Add terminal icon animation */
+.contact-header .header-icon {
+    animation: pulse 2s infinite;
+    background: #00ff00;
+}
+
+.contact-header .header-icon i {
+    animation: blink 1.5s step-end infinite;
+}
+
+/* Add new keyframe animations */
+@keyframes scanLine {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+@keyframes glitch {
+    0%, 90%, 100% { 
+        transform: none;
+        opacity: 1;
+    }
+    91% {
+        transform: skew(2deg);
+        opacity: 0.75;
+    }
+    92% {
+        transform: skew(-2deg);
+        opacity: 0.85;
+    }
+    93% {
+        transform: none;
+        opacity: 0.9;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Add hover effect */
+.contact-header:hover h3 {
+    animation: glitch 0.3s infinite;
+}
+
+.contact-header:hover .header-icon {
+    transform: rotate(180deg);
+    transition: transform 0.5s ease;
+}
+
+/* Add matrix rain effect in the background */
+.contact-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg,
+        rgba(0, 255, 0, 0.05) 25%,
+        transparent
+    );
+    animation: matrixRain 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes matrixRain {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
 }
 
 .header-icon {
@@ -645,13 +756,6 @@ nav {
     color: var(--background);
     border-radius: 10px;
     font-size: 1.5rem;
-}
-
-.contact-header h3 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--primary);
-    font-size: 1.5rem;
-    margin: 0;
 }
 
 .contact-content {
@@ -1222,22 +1326,88 @@ nav {
 }
 
 .project-card {
-    background: var(--card-bg, #1a1a1a);
+    background: var(--card-bg);
     border: 1px solid var(--border-color, #333);
     border-radius: 8px;
     padding: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+    border-color: #00ff00;
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+}
+
+.project-card:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        transparent, 
+        rgba(0, 255, 0, 0.1), 
+        transparent
+    );
+    animation: shine 1.5s ease-in-out infinite;
 }
 
 .project-icon {
     font-size: 2rem;
-    color: var(--primary);
+    color: #00ff00; /* Bright green */
     margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.1) rotate(5deg);
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    animation: pulse 2s infinite;
+}
+
+/* Add new animations */
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) rotate(-45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(-45deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+}
+
+/* Update project link hover effect */
+.project-link:hover {
+    color: #00ff00;
+    transform: translateX(5px);
+}
+
+.project-link:hover i {
+    animation: bounce 0.5s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
 }
 
 .project-content h4 {

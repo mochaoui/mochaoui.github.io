@@ -65,6 +65,28 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Start typing after initial commands are shown
     setTimeout(typeWriter, 2500);
+
+    // Add styles for active status
+    const style = document.createElement('style');
+    style.textContent = `
+        .status-dot.active {
+            background: #00ff00 !important; /* Bright green */
+            box-shadow: 0 0 10px #00ff00 !important;
+        }
+        
+        .status-text.active {
+            color: #00ff00 !important;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Add active class to status elements
+    const statusDot = document.querySelector('.status-dot');
+    const statusText = document.querySelector('.status-text');
+    if (statusDot && statusText) {
+        statusDot.classList.add('active');
+        statusText.classList.add('active');
+    }
 }); 
 
 // Add this function to show/hide the certificate progress
