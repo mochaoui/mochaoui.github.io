@@ -100,3 +100,74 @@ function toggleCertificateProgress(show) {
 // Example usage:
 // toggleCertificateProgress(true);  // Show the progress
 // toggleCertificateProgress(false); // Hide the progress 
+
+// Matrix Rain Animation
+function createMatrixRain() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const matrixRain = document.getElementById('matrix-rain');
+    
+    matrixRain.appendChild(canvas);
+    
+    canvas.style.position = 'fixed';
+    canvas.style.bottom = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '150px'; // Height of the rain effect
+    canvas.style.zIndex = '-1';
+    
+    // Set canvas size
+    function setCanvasSize() {
+        canvas.width = window.innerWidth;
+        canvas.height = 150;
+    }
+    
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+    
+    // Characters to use (mix of numbers, letters, and symbols)
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEF!@#$%^&*';
+    const charArray = chars.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    
+    // Array to track y position of each column
+    const drops = new Array(Math.floor(columns)).fill(0);
+    
+    // Drawing animation
+    function draw() {
+        // Clear the canvas with full transparency instead of semi-black
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Green text with slight transparency for trail effect
+        ctx.fillStyle = 'rgba(0, 255, 0, 0.8)';
+        ctx.font = fontSize + 'px monospace';
+        
+        // Loop over drops
+        for (let i = 0; i < drops.length; i++) {
+            // Random character
+            const char = charArray[Math.floor(Math.random() * charArray.length)];
+            
+            // Draw character with fade effect based on position
+            const alpha = 1 - (drops[i] * fontSize / canvas.height);
+            ctx.fillStyle = `rgba(0, 255, 0, ${alpha})`;
+            ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+            
+            // Reset drop to top with random delay if it's at the bottom
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            
+            // Move drop down
+            drops[i]++;
+        }
+    }
+    
+    // Animate
+    setInterval(draw, 35);
+}
+
+// Initialize Matrix Rain when document is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    createMatrixRain();
+}); 
