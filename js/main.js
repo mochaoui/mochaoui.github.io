@@ -171,3 +171,33 @@ function createMatrixRain() {
 document.addEventListener('DOMContentLoaded', () => {
     createMatrixRain();
 }); 
+
+// Add this to your existing JavaScript
+function createBinaryRain() {
+    const terminalDecoration = document.createElement('div');
+    terminalDecoration.className = 'terminal-decoration';
+    
+    // Create 10 columns of binary
+    for (let i = 0; i < 10; i++) {
+        const binaryString = document.createElement('div');
+        binaryString.className = 'binary-rain';
+        binaryString.style.left = `${i * 10}%`;
+        binaryString.style.animationDelay = `${Math.random() * 2}s`;
+        
+        // Create random binary string
+        let binary = '';
+        for (let j = 0; j < 20; j++) {
+            binary += Math.random() > 0.5 ? '1' : '0';
+        }
+        binaryString.textContent = binary;
+        
+        terminalDecoration.appendChild(binaryString);
+    }
+    
+    document.querySelector('.terminal-window').appendChild(terminalDecoration);
+}
+
+// Initialize binary rain when document is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    createBinaryRain();
+}); 
