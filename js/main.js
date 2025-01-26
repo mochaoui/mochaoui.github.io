@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start typing after initial commands are shown
     setTimeout(typeWriter, 2500);
 
-    // Add styles for active status
+    // Update styles for active status
     const style = document.createElement('style');
     style.textContent = `
         .status-dot.active {
@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
         statusDot.classList.add('active');
         statusText.classList.add('active');
     }
+
+    initProjectAnimations();
 }); 
 
 // Add this function to show/hide the certificate progress
@@ -201,3 +203,32 @@ function createBinaryRain() {
 document.addEventListener('DOMContentLoaded', () => {
     createBinaryRain();
 }); 
+
+// Add this function to your existing JavaScript
+function initProjectAnimations() {
+    const projectsSection = document.querySelector('.projects');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.visibility = 'visible';
+                projectCards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                    card.style.animationPlayState = 'running';
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    observer.observe(projectsSection);
+}
+
+// Add this to your DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing code ...
+    initProjectAnimations();
+});

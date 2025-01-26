@@ -1693,38 +1693,7 @@ section[id] {
     margin-top: 2rem;
 }
 
-/* Update badge container styles */
-.badge-container {
-    display: flex;
-    justify-content: center;
-    margin: 2rem auto; /* Center horizontally */
-    padding: 1rem;
-    background: var(--card-bg);
-    border-radius: 10px;
-    border: 1px solid var(--primary);
-    max-width: 400px; /* Set a max-width for a single container look */
-    box-shadow: 0 0 20px var(--border-glow);
-}
-
-.badge-42 {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
-}
-
-.badge-42:hover {
-    transform: scale(1.02);
-}
-
-@media (max-width: 768px) {
-    .badge-container {
-        max-width: 90%; /* Adjust for mobile */
-        padding: 0.5rem;
-        margin: 1.5rem auto;
-    }
-}
-
+/* Update certificate container styles */
 .certificate-container {
     padding: 10px 0;
     text-align: center;
